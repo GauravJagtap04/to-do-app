@@ -8,6 +8,7 @@
 		
 		<link rel="shortcut icon" type="image/x-icon" href="images/logo.png">
 		<link rel="stylesheet" href="todo.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		
 		<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,8 +18,12 @@
 		<div id="container">
 			<h1>TO-DO LIST</h1>
 			<div id="input-field">
-				<input />
-				<input type="text" placeholder="Add Task..." />
+				<select name="priority" id="priority" required>
+					<option value="L"><span style="color: white;"><i class="fa fa-circle" aria-hidden="true"></i></span>Low</option>
+					<option value="M" selected>Medium</option>
+					<option value="H">High</option>
+				</select>
+				<input type="text" placeholder="Add Task..." required/>
 				<button type="submit"><i class="fa fa-plus" aria-hidden="true"></i></button>
 			</div>
 			<div id="output-field">
