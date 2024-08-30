@@ -19,15 +19,26 @@
 			<h1>TO-DO LIST</h1>
 			<div id="input-field">
 				<select name="priority" id="priority" required>
-					<option value="L"><span style="color: white;"><i class="fa fa-circle" aria-hidden="true"></i></span>Low</option>
-					<option value="M" selected>Medium</option>
+					<option value="" disabled selected hidden>select priority</option>
+					<option value="L">Low</option>
+					<option value="M">Medium</option>
 					<option value="H">High</option>
 				</select>
-				<input type="text" placeholder="Add Task..." required/>
-				<button type="submit"><i class="fa fa-plus" aria-hidden="true"></i></button>
+				<input id="input-task" type="text" placeholder="Add Task..." required/>
+				<button id="submit-btn" type="submit" onclick="submit()"><i class="fa fa-plus" aria-hidden="true"></i></button>
 			</div>
 			<div id="output-field">
-				
+				<ul id="output-field-list">
+					<li>
+						<table>
+							<tr>
+								<td><input id="checkbox" type="checkbox"></td>
+								<td id="todo-output">This is task 1</td>
+								<td><img id="cancel" src="images/x.png" alt="cancel"></td>
+							</tr>
+						</table>
+					</li>
+				</ul>
 			</div>
 		</div>
 		<script type="text/javascript" src="todo.js"></script>

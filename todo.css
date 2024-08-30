@@ -48,7 +48,7 @@ option {
 	text-align: center;
 }
 
-input {
+input:not(#checkbox) {
 	background-color: transparent;
 	border: 0;
 	margin: 20px;
@@ -66,15 +66,48 @@ input {
 	text-align: center;
 }
 
-#icon-blue {
-	color: rgb(28, 107, 180);
-}
-
 button {
 	padding: 8px 11px;
 	border-radius: 10px;
 	border: none;
-	background-color: seagreen;
+	background-color: rgb(136, 207, 22);
 	color: black;
 	font-size: 1rem;
+}
+
+#output-field {
+	margin-top: 30px;
+}
+
+ul {
+	color: white;
+	list-style: none;
+}
+
+table {
+	margin: auto;
+	outline: 1px solid #ddd;
+	width: 80%;
+	padding: 5px 10px;
+	font-family: Poppins;
+	font-size: 1rem;
+}
+
+table tr td:first-of-type {
+	text-align: left;
+}
+
+table tr td:nth-of-type(2) {
+	text-align: center;
+}
+
+table tr td:nth-of-type(3) {
+	text-align: right;
+}
+
+#cancel {
+	filter: invert();
+	opacity: 60%;
+	width: 1rem;
+	height: 1rem;
 }
