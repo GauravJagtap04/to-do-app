@@ -4,7 +4,7 @@ const submitBtn = document.getElementById("submit-btn");
 const outputFldLst = document.getElementById("output-field-list");
 
 const taskData = JSON.parse(localStorage.getItem("data")) || [];
-let currentTask = {};
+const currentTask = {};
 
 const addTask = () => {
     const taskValue = inputTask.value.trim();
@@ -65,7 +65,7 @@ const updateOutputFldLst = () => {
     );
 };
 
-const deleteTask = (taskId) => {
+const _deleteTask = (taskId) => {
     const dataArrIndex = taskData.findIndex(
         (item) => item.id === taskId
     );
