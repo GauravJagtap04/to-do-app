@@ -1,52 +1,96 @@
 const inputPrio = document.getElementById("priority");
 const inputTask = document.getElementById("input-task");
 const submitBtn = document.getElementById("submit-btn");
-const outputFld = document.getElementById("output-field");
 const outputFldLst = document.getElementById("output-field-list");
 
-let todoArr = [];
+const taskData = JSON.parse(localStorage.getItem("data")) || [];
+let currentTask = {};
 
-const submit = (event) => {
-    event.preventDefault();
-    addTask(inputTask.value);
+const addTask = () => {
+    const taskValue = inputTask.value.trim();
+    const priorityValue = inputPrio.value;
+
+    if (!taskValue || !priorityValue) {
+        alert("Please enter a task and select a priority.");
+        return;
+    }
+
+    const taskObj = {
+        id: `${taskValue.toLowerCase().split(" ").join("-")}-${Date.now()}`,
+        task: taskValue,
+        priority: priorityValue,
+    };
+
+    const dataArrIndex = taskData.findIndex((item) => item.id === currentTask.id);
+
+    if (dataArrIndex === -1) {
+        taskData.unshift(taskObj);
+    } else {
+        taskData[dataArrIndex] = taskObj;
+    }
+
+    localStorage.setItem("data", JSON.stringify(taskData));
+    updateOutputFldLst();
+
+    inputTask.value = "";
+    inputPrio.value = "";
 };
 
-const addTask = (item) = {
-    if (item !== '') {
-        const task = {
-            id: Date.now(),
-            priority: priority,
-            todotask: item,
-            completed: false
-        };
+const updateOutputFldLst = () => {
+    outputFldLst.innerHTML = "";
 
-        todoArr.push(task);
-        renderTask(todoArr);
+    taskData.forEach(
+        ({ id, task, priority }) => {
+            let priorityColor;
+            if (priority === "L") priorityColor = "var(--low-priority)";
+            else if (priority === "M") priorityColor = "var(--med-priority)";
+            else if (priority === "H") priorityColor = "var(--high-priority)";
 
-        todoInput.value = "";
-    } else {
-        alert("Enter task");
+            outputFldLst.innerHTML += `
+                <li id="${id}">
+					<table style="box-shadow: 0px 0px 10px ${priorityColor};">
+						<tr>
+							<td>
+								<div class="checkbox-wrapper-13">
+									<input id="c1-13" type="checkbox">
+								</div>
+							</td>
+							<td>${task}</td>
+							<td><img id="cancel" onclick="deleteTask('${id}')" src="images/x.png" alt="cancel"></td>
+						</tr>
+					</table>
+				</li>
+            `;
+        }
+    );
+};
+
+const deleteTask = (taskId) => {
+    const dataArrIndex = taskData.findIndex(
+        (item) => item.id === taskId
+    );
+
+    if (dataArrIndex !== -1) {
+        taskData.splice(dataArrIndex, 1);
+        document.getElementById(taskId).remove();
+        localStorage.setItem("data", JSON.stringify(taskData));
     }
 };
 
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        addTask();
+    }
+});
 
-const renderTask = (todoArr) = {
-    outputFldLst.innerHTML = '';
+submitBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    addTask();
+});
 
-    todoArr.forEach(item => {
-        const checked = item.completed ? 'checked' : null;
+document.addEventListener('DOMContentLoaded', () => {
+    updateOutputFldLst();
+});
 
-        const li = document.createElement('li');
-        li.setAttribute('class', 'item');
-        li.setAttribute('data-key', item.id);
-        if (items.completed === true) {
-            li.classList.add('checked');
-        }
-        li.innerHTML = `
-            <input type="checkbox" class="checkbox" ${checked}>
-            ${item.name}
-            <button class="delete-button">X</button>
-        `;
-        outputFldLst.append(li);
-    });
-};
+updateOutputFldLst();

@@ -134,6 +134,7 @@ table {
 	  --disabled-inner: #E1E6F9;
 	  -webkit-appearance: none;
 	  -moz-appearance: none;
+	  appearance: none;
 	  height: 21px;
 	  outline: none;
 	  display: inline-block;
