@@ -23,7 +23,6 @@ body {
 
 #container {
 	background: var(--black);
-	padding: 100px 0px;
 	margin: 50px auto;
 	max-height: 90%;
 	width: 60%;
@@ -96,6 +95,17 @@ button {
 
 #output-field {
 	margin-top: 30px;
+}
+
+#output-field-list-completed h2 {
+	text-align: center;
+	font-family: Poppins;
+	font-size: 1.3rem;
+	background: linear-gradient(90deg, rgb(80, 80, 255), rgb(200, 203, 211));
+	background-clip: text;
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 ul {
@@ -223,7 +233,6 @@ table {
 
 table tr td:first-of-type {
 	text-align: left;
-	padding: 0;
 	margin: 0;
 	padding: 0 2px 0 2px;
 }
