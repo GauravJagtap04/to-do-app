@@ -17,8 +17,13 @@ const addTask = () => {
     const priorityValue = inputPrio.value;
 
     if (!taskValue || !priorityValue) {
-        alert("Please enter a task and select a priority.");
-        return;
+        if (!taskValue) {
+            alert("Please enter a task.");
+            return;
+        } else if (!priorityValue) {
+            alert("Please set priority of task.");
+            return;
+        }
     }
 
     const taskObj = {
@@ -56,15 +61,15 @@ const updateOutputFldLst = () => {
 
             outputFldLst.innerHTML += `
                 <li id="${id}">
-					<table style="box-shadow: 0px 0px 10px ${priorityColor};" title="${date + " " + minutes}">
+					<table style="box-shadow: 0px 0px 10px ${priorityColor};">
 						<tr>
 							<td>
-								<div class="checkbox-wrapper-13">
+								<div class="checkbox-wrapper-13" title="Task completed">
 									<input id="c1-13" type="checkbox" onchange="addCompleted('${id}')">
 								</div>
 							</td>
-							<td>${task}</td>
-							<td><img id="cancel" onclick="deleteTask('${id}')" src="images/x.png" alt="cancel"></td>
+							<td title="${date + " " + minutes}">${task}</td>
+							<td><img id="cancel" title="Delete task" onclick="deleteTask('${id}')" src="images/x.png" alt="cancel" style="cursor: pointer"></td>
 						</tr>
 					</table>
 				</li>
@@ -91,8 +96,8 @@ const updateCompletedOutputFldLst = () => {
                 <li id="${id}">
 					<table style="box-shadow: 0px 0px 10px ${priorityColor};">
 						<tr>
-							<td style="width: 95%; text-align: center; margin: 0; padding: 0;" title="${minutes}">${task}</td>
-							<td style="width: 5%; text-align: right; margin: 0; padding: 0;"><img id="cancel" onclick="deleteCompletedTask('${id}')" src="images/x.png" alt="cancel"></td>
+							<td style="width: 95%; text-align: center; margin: 0; padding: 0;" title="${date + " " + minutes}">${task}</td>
+							<td style="width: 5%; text-align: right; margin: 0; padding: 0;"><img id="cancel" title="Delete task" onclick="deleteCompletedTask('${id}')" src="images/x.png" alt="cancel" style="cursor: pointer"></td>
 						</tr>
 					</table>
 				</li>
@@ -150,7 +155,6 @@ const addCompleted = (taskId) => {
         updateCompletedOutputFldLst();
     }
 };
-
 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
