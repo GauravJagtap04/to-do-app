@@ -92,8 +92,19 @@ button {
 	background-color: rgb(136, 207, 22);
 	color: var(--black);
 	font-size: 1rem;
+	transition-duration: .3s;
 }
 
+button:hover #add-icon {
+	transform: scale(225%);
+	transition-duration: .3s;
+	color: rgb(136, 207, 22);
+}
+
+button:hover {
+	background-color: black;
+	transition-duration: .3s;
+}
 
 #output-field {
 	margin-top: 30px;
@@ -276,6 +287,36 @@ table tr td:nth-of-type(3) {
 		min-height: 40vh;
 		padding: 0;
 		margin: 0;
+	}
+
+	select {
+		border: none;
+		outline: none;
+		background: transparent;
+		color: rgb(212, 212, 212);
+		font-size: .8rem;
+		padding: 7px;
+		font-family: Montserrat;
+	}
+	
+	option {
+		background: #000000;
+		padding: 0;
+		margin: 0;
+		color: var(--white);
+		border: none;
+		outline: none;
+		font-family: Poppins;
+		font-size: .7rem;
+		text-align: center;
+	}	
+
+	input:not(#c1-13) {
+		margin: 0 10px;
+		font-size: .8rem;
+		padding: 7px;
+		min-width: 40vw;
+		max-width: 40vw;
 	}
 
 	#output-field {
