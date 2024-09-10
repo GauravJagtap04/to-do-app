@@ -6,6 +6,20 @@
 	--white: white;
 }
 
+::-webkit-scrollbar {
+	width: 12px;
+}
+  
+::-webkit-scrollbar-track {	
+	border-radius: 100vh;	
+	background: black;
+}
+
+::-webkit-scrollbar-thumb {	
+	background: linear-gradient(rgb(0, 216, 245), rgb(181, 255, 61));
+	border-radius: 5px;
+}
+
 html {
 	box-sizing: border-box;
 }
